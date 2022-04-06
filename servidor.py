@@ -9,25 +9,27 @@ def index():
 @app.route("/calculo/", methods=['POST'])
 def calculadora():
 
-    numero1 = request.form['numero1']
-    numero2 = request.form['numero2']
+#Requisições
+    valor_a = request.form['valor_a']
+    valor_b = request.form['valor_b']
     operacao = request.form['operacao']
     resultado = 0
 
-    numero1 = float(numero1)
-    numero2 = float(numero2)
+    valor_a = float(valor_a)
+    valor_b = float(valor_b)
     operacao = str(operacao)
 
-    if (operacao == "/" and numero2 == 0):
-        resultado = 'Não se pode dividir um número por 0.'
+#Operações
+    if (operacao == "/" and valor_b == 0):
+        resultado = 'Não pode dividir por 0.'
     elif (operacao == "*"):
-        resultado = numero1 * numero2
+        resultado = valor_a * valor_b
     elif (operacao == "/"):
-        resultado = numero1 / numero2
+        resultado = valor_a / valor_b
     elif (operacao == "+"):
-        resultado = numero1 + numero2
+        resultado = valor_a + valor_b
     elif (operacao == "-"):
-        resultado = numero1 - numero2
+        resultado = valor_a - valor_b
 
     return str(resultado)
 
